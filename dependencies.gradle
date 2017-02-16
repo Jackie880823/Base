@@ -1,0 +1,57 @@
+/*
+ *
+ *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ *             $                                                   $
+ *             $                       _oo0oo_                     $
+ *             $                      o8888888o                    $
+ *             $                      88" . "88                    $
+ *             $                      (| -_- |)                    $
+ *             $                      0\  =  /0                    $
+ *             $                    ___/`-_-'\___                  $
+ *             $                  .' \\|     |$ '.                 $
+ *             $                 / \\|||  :  |||$ \                $
+ *             $                / _||||| -:- |||||- \              $
+ *             $               |   | \\\  -  $/ |   |              $
+ *             $               | \_|  ''\- -/''  |_/ |             $
+ *             $               \  .-\__  '-'  ___/-. /             $
+ *             $             ___'. .'  /-_._-\  `. .'___           $
+ *             $          ."" '<  `.___\_<|>_/___.' >' "".         $
+ *             $         | | :  `- \`.;`\ _ /`;.`/ - ` : | |       $
+ *             $         \  \ `_.   \_ __\ /__ _/   .-` /  /       $
+ *             $     =====`-.____`.___ \_____/___.-`___.-'=====    $
+ *             $                       `=-_-='                     $
+ *             $     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   $
+ *             $                                                   $
+ *             $          Buddha Bless         Never Bug           $
+ *             $                                                   $
+ *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+ *
+ *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
+ */
+
+ext {
+    compileSdkVersion           = 25
+    buildToolsVersion           = "25.0.2"
+    applicationId               = "com.madxstudio.mb2be"
+    minSdkVersion               = 15
+    targetSdkVersion            = 25
+    versionCode                 = 1
+    versionName                 = "1.0"
+    testInstrumentationRunner   = "android.support.test.runner.AndroidJUnitRunner"
+    supportVersion              = '25.1.1'
+
+    dep = [
+            junit               : 'junit:junit:4.12',
+            okgo                : 'com.lzy.net:okgo:2.1.4',
+            okServer            : 'com.lzy.net:okserver:1.1.3',
+            gson                : 'com.google.code.gson:gson:2.4',
+            glide               : 'com.github.bumptech.glide:glide:3.7.0',
+            multidex            : 'com.android.support:multidex:1.0.1',
+            espresso            : 'com.android.support.test.espresso:espresso-core:2.2.2',
+            design              : 'com.android.support:design:' + supportVersion,
+            supportV4           : 'com.android.support:support-v4:' + supportVersion,
+            appcompatV7         : 'com.android.support:appcompat-v7:' + supportVersion,
+            recyclerview        : 'com.android.support:recyclerview-v7:' + supportVersion,
+            supportAnnotation   : 'com.android.support:support-annotations:' + supportVersion
+    ]
+}
