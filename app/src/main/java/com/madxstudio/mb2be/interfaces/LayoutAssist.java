@@ -29,50 +29,24 @@
  *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
  */
 
-package com.madxstudio.mb2be.base;
+package com.madxstudio.mb2be.interfaces;
 
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.madxstudio.mb2be.R;
-import com.madxstudio.mb2be.interfaces.LayoutAssist;
-
 /**
- * Created 17/2/13.
+ * Created 17/2/16.
  *
  * @author Jackie
  * @version 1.0
  */
-public abstract class BaseActivity extends AppCompatActivity implements LayoutAssist{
 
-    protected ActionBar actionBar;
-
+public interface LayoutAssist {
     @LayoutRes
-    public abstract int getLayoutId();
+    int getLayoutId();
 
-    public <V extends View> V getViewById(@IdRes int id) {
-        return (V) findViewById(id);
-    }
+    <V extends View>V getViewById(@IdRes int resId);
 
-    @Override
-    public void initView() {
-        Toolbar toolbar = getViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-            actionBar = getSupportActionBar();
-        }
-    }
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(getLayoutId());
-    }
+    void initView();
 }

@@ -40,6 +40,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.madxstudio.mb2be.interfaces.LayoutAssist;
+
 /**
  * Created 17/2/13.
  *
@@ -47,18 +49,23 @@ import android.view.ViewGroup;
  * @version 1.0
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment implements LayoutAssist{
 
     @LayoutRes
-    protected abstract int getLayoutId();
+    public abstract int getLayoutId();
+
+    public <V extends View> V getViewById(@IdRes int id) {
+        return (V) getView().findViewById(id);
+    }
+
+    @Override
+    public void initView() {
+
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getLayoutId(), container);
-    }
-
-    protected <V extends View> V getViewById(@IdRes int id) {
-        return (V) getView().findViewById(id);
     }
 }
