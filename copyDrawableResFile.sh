@@ -41,8 +41,8 @@ do
         mkdir $TARGET
     fi
 
-    if ["${2}" == ""]; then
-        # 不需要修改文件名，去掉过滤的字符串
+    if [ ! -n $2 ]; then
+        # 没有输入文件名，不需要修改文件名，去掉过滤的字符串
         FILE_NAME=${file##*/}
         FILE_NAME=${FILE_NAME/${filter}/""}
     else
