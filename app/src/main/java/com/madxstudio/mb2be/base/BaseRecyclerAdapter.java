@@ -40,6 +40,6 @@ import android.support.v7.widget.RecyclerView;
  * @version 1.0
  */
 
-public abstract class BaseRecyclerAdapter<VH extends ViewHolder> extends RecyclerView
-        .Adapter<VH> {
+public abstract class BaseRecyclerAdapter<V> extends RecyclerView
+        .Adapter<ViewHolder<V>> {
 }

@@ -44,14 +44,14 @@ import java.util.List;
  * @version 1.0
  */
 
-public abstract class BindRecyclerAdapter<VH extends ViewHolder, E> extends
-        BaseRecyclerAdapter<VH> {
+public abstract class BindRecyclerAdapter<V> extends
+        BaseRecyclerAdapter<V> {
 
-    protected List<E> mData;
+    protected List<V> mData;
 
     protected Context mContext;
 
-    public void setData(Collection<E> data) {
+    public void setData(Collection<V> data) {
         if (data == null || data.isEmpty()) {
             // 清空数据
             mData = null;
@@ -65,7 +65,7 @@ public abstract class BindRecyclerAdapter<VH extends ViewHolder, E> extends
 
     }
 
-    public void addData(Collection<E> data) {
+    public void addData(Collection<V> data) {
         if (data == null || data.isEmpty()) {
             // 添加空数据直接返回
             return;
@@ -81,11 +81,11 @@ public abstract class BindRecyclerAdapter<VH extends ViewHolder, E> extends
         }
     }
 
-    public void addItem(E item) {
+    public void addItem(V item) {
         addItem(getItemCount(), item);
     }
 
-    public void addItem(int position, E item) {
+    public void addItem(int position, V item) {
         if (mData == null) {
             mData = new ArrayList<>();
         }
@@ -95,7 +95,7 @@ public abstract class BindRecyclerAdapter<VH extends ViewHolder, E> extends
     }
 
     @Override
-    public void onBindViewHolder(VH holder, int position) {
+    public void onBindViewHolder(ViewHolder<V> holder, int position) {
         holder.bindEntity(mData.get(position));
     }
 

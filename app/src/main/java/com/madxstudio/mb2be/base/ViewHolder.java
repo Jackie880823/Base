@@ -42,11 +42,11 @@ import android.view.View;
  */
 
 
-public abstract class ViewHolder<E> extends RecyclerView.ViewHolder {
+public abstract class ViewHolder<V> extends RecyclerView.ViewHolder {
 
     public ViewHolder(View itemView) {
         super(itemView);
     }
 
-    public abstract void bindEntity(E entity);
+    public abstract void bindEntity(V entity);
 }
