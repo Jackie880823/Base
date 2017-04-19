@@ -6,7 +6,7 @@
 find $1 -name "${2}*" | while read file
 do
     # 目标
-    TARGET=./app/src/main/res
+    TARGET=../app/src/main/res
     FileName="${file##*res/}"
     TARGET=${TARGET}/${FileName}
     echo "copy ${file} to ${TARGET}"

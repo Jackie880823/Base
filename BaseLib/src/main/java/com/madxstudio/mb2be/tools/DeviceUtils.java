@@ -29,4 +29,22 @@
  *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
  */
 
-include ':BaseLib', ':sample'
+package com.madxstudio.mb2be.tools;
+
+import android.provider.Settings;
+
+import com.madxstudio.mb2be.BaseApp;
+
+/**
+ * Created 17/4/5.
+ *
+ * @author Jackie
+ * @version 1.0
+ */
+
+public class DeviceUtils {
+    public static String getUUID() throws Settings.SettingNotFoundException {
+        return Settings.Secure.getString(BaseApp.getInstance().getContentResolver(), Settings
+                .Secure.ANDROID_ID);
+    }
+}

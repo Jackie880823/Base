@@ -29,4 +29,17 @@
  *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
  */
 
-include ':BaseLib', ':sample'
+package com.madxstudio.mb2be.interfaces;
+
+import android.view.View;
+
+/**
+ * Created 17/3/16.
+ *
+ * @author Jackie
+ * @version 1.0
+ */
+
+public interface OnViewHolderLongClickListener {
+    void onLongClick(View view, int position);
+}

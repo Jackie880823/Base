@@ -6,7 +6,7 @@
 find $1 -name "*.png" | while read file
 do
     # 目标
-    TARGET=./app/src/main/res
+    TARGET=../app/src/main/res
     filter=""
     case "${file##*/}" in
         *@1.5x*)

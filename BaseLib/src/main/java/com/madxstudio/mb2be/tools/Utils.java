@@ -29,4 +29,20 @@
  *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
  */
 
-include ':BaseLib', ':sample'
+package com.madxstudio.mb2be.tools;
+
+import java.text.DecimalFormat;
+
+/**
+ * Created 17/4/6.
+ *
+ * @author Jackie
+ * @version 1.0
+ */
+
+public class Utils {
+    public static String formatCurrency(Double currencyValue) {
+        DecimalFormat decimalFormat = new DecimalFormat(",##0.00");
+        return decimalFormat.format(currencyValue);
+    }
+}

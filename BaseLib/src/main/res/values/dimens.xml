@@ -1,0 +1,63 @@
+<!--
+  ~
+  ~             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  ~             $                                                   $
+  ~             $                       _oo0oo_                     $
+  ~             $                      o8888888o                    $
+  ~             $                      88" . "88                    $
+  ~             $                      (| -_- |)                    $
+  ~             $                      0\  =  /0                    $
+  ~             $                    ___/`-_-'\___                  $
+  ~             $                  .' \\|     |$ '.                 $
+  ~             $                 / \\|||  :  |||$ \                $
+  ~             $                / _||||| -:- |||||- \              $
+  ~             $               |   | \\\  -  $/ |   |              $
+  ~             $               | \_|  ''\- -/''  |_/ |             $
+  ~             $               \  .-\__  '-'  ___/-. /             $
+  ~             $             ___'. .'  /-_._-\  `. .'___           $
+  ~             $          ."" '<  `.___\_<|>_/___.' >' "".         $
+  ~             $         | | :  `- \`.;`\ _ /`;.`/ - ` : | |       $
+  ~             $         \  \ `_.   \_ __\ /__ _/   .-` /  /       $
+  ~             $     =====`-.____`.___ \_____/___.-`___.-'=====    $
+  ~             $                       `=-_-='                     $
+  ~             $     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   $
+  ~             $                                                   $
+  ~             $          Buddha Bless         Never Bug           $
+  ~             $                                                   $
+  ~             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  ~
+  ~  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
+  -->
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- 控件内容之间的padding 非明确要求只可使用这四种选择，不可以再出现其它dp -->
+    <dimen name="content_dimen_mini">1dp</dimen>
+    <dimen name="content_dimen_small">4dp</dimen>
+    <dimen name="content_dimen_normal">8dp</dimen>
+    <dimen name="content_dimen_medium">16dp</dimen>
+    <dimen name="content_dimen_xmedium">24dp</dimen>
+    <dimen name="content_dimen_large">32dp</dimen>
+    <dimen name="content_dimen_xlarge">64dp</dimen>
+
+    <!-- 应用中需要用到的设置文字大小 -->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">24sp</dimen>
+
+    <dimen name="radius_small">1dp</dimen>
+    <dimen name="radius_normal">2dp</dimen>
+    <dimen name="radius_medium">4dp</dimen>
+    <dimen name="radius_large">8dp</dimen>
+    <dimen name="radius_xx_large">30dp</dimen>
+    <dimen name="radius_super_large">60dp</dimen>
+
+    <dimen name="stroke_size">1dp</dimen>
+    <dimen name="image_small_size">20dp</dimen>
+    <dimen name="image_head_size">48dp</dimen>
+    <dimen name="image_head_medium_size">96dp</dimen>
+
+</resources>
