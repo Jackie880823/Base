@@ -30,7 +30,7 @@
   ~  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.madxstudio.mb2be">
+          package="com.madxstudio.libs">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

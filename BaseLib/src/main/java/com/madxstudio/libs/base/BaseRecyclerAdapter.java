@@ -40,15 +40,17 @@
  *  limitations under the License.
  */
 
-package com.madxstudio.sample;
+package com.madxstudio.libs.base;
 
-import com.madxstudio.libs.BaseApp;
+import android.support.v7.widget.RecyclerView;
 
 /**
- * Created 17/4/19.
+ * Created 16/11/25.
  *
  * @author Jackie
  * @version 1.0
  */
 
-public class App extends BaseApp {}
+public abstract class BaseRecyclerAdapter<V> extends RecyclerView.Adapter<ViewHolder<V>> {
+
+}

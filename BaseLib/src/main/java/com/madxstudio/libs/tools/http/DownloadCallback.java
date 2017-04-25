@@ -40,15 +40,46 @@
  *  limitations under the License.
  */
 
-package com.madxstudio.sample;
+package com.madxstudio.libs.tools.http;
 
-import com.madxstudio.libs.BaseApp;
+import java.io.File;
 
 /**
- * Created 17/4/19.
+ * 文件下载的回调，可以指定下载的目录和文件名，回调下载进度
+ * Created 17/2/15.
  *
  * @author Jackie
  * @version 1.0
  */
 
-public class App extends BaseApp {}
+public abstract class DownloadCallback extends Callback<File> {
+    /**
+     * 下载存放的文件目录
+     */
+    private String destFileDir;
+    /**
+     * 下载存放的文件名
+     */
+    private String destFileName;
+
+    public DownloadCallback() {
+        this(null);
+    }
+
+    public DownloadCallback(String destFileName) {
+        this(null, destFileName);
+    }
+
+    public DownloadCallback(String destFileDir, String destFileName) {
+        this.destFileDir = destFileDir;
+        this.destFileName = destFileName;
+    }
+
+    public String getDestFileDir() {
+        return destFileDir;
+    }
+
+    public String getDestFileName() {
+        return destFileName;
+    }
+}

@@ -1,4 +1,5 @@
 /*
+ *
  *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  *             $                                                   $
  *             $                       _oo0oo_                     $
@@ -25,30 +26,31 @@
  *             $                                                   $
  *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  *
- *  Copyright (C) 2017 The Jackie's Android Open Source Project
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
  */
 
-package com.madxstudio.sample;
-
-import com.madxstudio.libs.BaseApp;
+package com.madxstudio.libs.tools;
 
 /**
- * Created 17/4/19.
+ * Created 17/2/14.
  *
  * @author Jackie
  * @version 1.0
  */
+public class Constants {
 
-public class App extends BaseApp {}
+    /**
+     * http协议头，在{@link android.net.Uri}中可以用这个来判断网络协议类型
+     */
+    public static final String SCHEME_HTTP = "http";
+
+    /**
+     * http协议头，在{@link android.net.Uri}中可以用这个来判断网络协议类型
+     */
+    public static final String SCHEME_HTTPS = "http";
+
+    /**
+     * 本应用主要保存{@code key-value}的{@link android.content.SharedPreferences}的文件名称
+     */
+    public static final String PREFERENCE_NAME = "mb2be_preference";
+}

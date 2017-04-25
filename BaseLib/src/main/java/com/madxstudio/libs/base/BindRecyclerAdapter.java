@@ -40,15 +40,88 @@
  *  limitations under the License.
  */
 
-package com.madxstudio.sample;
+package com.madxstudio.libs.base;
 
-import com.madxstudio.libs.BaseApp;
+import android.content.Context;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 
 /**
- * Created 17/4/19.
+ * Created 16/11/25.
  *
  * @author Jackie
  * @version 1.0
  */
 
-public class App extends BaseApp {}
+public abstract class BindRecyclerAdapter<V> extends BaseRecyclerAdapter<V> {
+
+    protected List<V> mData;
+
+    protected Context mContext;
+
+    public BindRecyclerAdapter(Context context) {
+        this(context, new ArrayList<V>());
+    }
+
+    public BindRecyclerAdapter(Context mContext, List<V> mData) {
+        this.mData = mData;
+        this.mContext = mContext;
+    }
+
+    public void setData(Collection<? extends V> data) {
+        if (data == null || data.isEmpty()) {
+            // 清空数据
+            mData = null;
+        } else if (mData != null) {
+            mData.clear();
+            mData = new ArrayList<>(data);
+        } else {
+            mData = new ArrayList<>(data);
+        }
+        notifyDataSetChanged();
+
+    }
+
+    public void addData(Collection<? extends V> data) {
+        if (data == null || data.isEmpty()) {
+            // 添加空数据直接返回
+            return;
+        }
+
+        if (mData == null) {
+            mData = new ArrayList<>(data);
+            notifyDataSetChanged();
+        } else {
+            int positionStart = getItemCount();
+            mData.addAll(data);
+            notifyItemRangeInserted(positionStart, data.size());
+        }
+    }
+
+    public void addItem(V item) {
+        addItem(getItemCount(), item);
+    }
+
+    public void addItem(int position, V item) {
+        if (mData == null) {
+            mData = new ArrayList<>();
+        }
+
+        mData.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder<V> holder, int position) {
+        holder.bindEntity(mData.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return mData == null ? 0 : mData.size();
+    }
+
+}

@@ -1,4 +1,5 @@
 /*
+ *
  *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  *             $                                                   $
  *             $                       _oo0oo_                     $
@@ -25,30 +26,59 @@
  *             $                                                   $
  *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  *
- *  Copyright (C) 2017 The Jackie's Android Open Source Project
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
  */
 
-package com.madxstudio.sample;
+package com.madxstudio.libs;
 
-import com.madxstudio.libs.BaseApp;
+import android.support.multidex.MultiDexApplication;
+
+import com.madxstudio.libs.base.BaseActivity;
+import com.madxstudio.libs.tools.http.HttpUtil;
+
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Created 17/4/19.
+ * Created 17/2/13.
  *
  * @author Jackie
  * @version 1.0
  */
+public class BaseApp extends MultiDexApplication {
+    private static BaseApp instance;
 
-public class App extends BaseApp {}
+    private static Set<WeakReference<BaseActivity>> activities = new HashSet<>();
+
+    public static BaseApp getInstance() {
+        return instance;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+
+        // 初始化网络框架
+        HttpUtil.init(new HashMap<String, String>());
+    }
+
+    public static void addActivity(BaseActivity activity) {
+        activities.add(new WeakReference<>(activity));
+    }
+
+    public static void removeActivity(BaseActivity activity) {
+        activities.remove(new WeakReference<>(activity));
+    }
+
+    public static void clearActivities() {
+        for (WeakReference<BaseActivity> reference : activities) {
+            BaseActivity activity = reference.get();
+            if (activity != null) {
+                activity.finish();
+            }
+        }
+    }
+}

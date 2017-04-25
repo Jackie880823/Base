@@ -32,7 +32,7 @@
 ext {
     compileSdkVersion           = 25
     buildToolsVersion           = "25.0.2"
-    applicationId               = "com.madxstudio.mb2be"
+    applicationId               = "com.madxstudio.libs"
     minSdkVersion               = 15
     targetSdkVersion            = 25
     versionCode                 = 1

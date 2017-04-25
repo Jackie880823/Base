@@ -45,7 +45,7 @@ package com.madxstudio.sample;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.madxstudio.mb2be.tools.LogUtil;
+import com.madxstudio.libs.tools.LogUtil;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";

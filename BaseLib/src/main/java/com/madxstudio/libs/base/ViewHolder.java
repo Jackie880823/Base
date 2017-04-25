@@ -1,4 +1,5 @@
 /*
+ *
  *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  *             $                                                   $
  *             $                       _oo0oo_                     $
@@ -25,30 +26,67 @@
  *             $                                                   $
  *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  *
- *  Copyright (C) 2017 The Jackie's Android Open Source Project
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
  */
 
-package com.madxstudio.sample;
+package com.madxstudio.libs.base;
 
-import com.madxstudio.libs.BaseApp;
+import android.support.annotation.CallSuper;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+import com.madxstudio.libs.interfaces.OnViewHolderClickListener;
+import com.madxstudio.libs.interfaces.OnViewHolderLongClickListener;
 
 /**
- * Created 17/4/19.
+ * Created 16/11/25.
  *
  * @author Jackie
  * @version 1.0
  */
 
-public class App extends BaseApp {}
+
+public abstract class ViewHolder<V> extends RecyclerView.ViewHolder implements View
+        .OnClickListener, View.OnLongClickListener {
+    private OnViewHolderClickListener clickListener;
+    private OnViewHolderLongClickListener longClickListener;
+
+    protected V entity;
+
+    public ViewHolder(View itemView) {
+        super(itemView);
+        itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
+    }
+
+    @CallSuper
+    public void bindEntity(V entity) {
+        this.entity = entity;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (clickListener == null) {
+            return;
+        }
+
+        clickListener.onClick(v, getAdapterPosition());
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (longClickListener == null) {
+            return false;
+        }
+        longClickListener.onLongClick(v, getAdapterPosition());
+        return false;
+    }
+
+    public void setClickListener(OnViewHolderClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+
+    public void setLongClickListener(OnViewHolderLongClickListener longClickListener) {
+        this.longClickListener = longClickListener;
+    }
+}
