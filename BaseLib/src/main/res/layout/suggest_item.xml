@@ -30,51 +30,60 @@
   ~  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
   -->
 
-
-<android.support.design.widget.AppBarLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/app_bar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:theme="@style/AppTheme.AppBarOverlay">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+    android:layout_height="?attr/actionBarSize"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp">
 
     <RelativeLayout
-        android:id="@+id/msg_bar"
+        android:id="@+id/layout_suggest"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/msg_bar_background"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/content_dimen_normal"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/content_dimen_normal">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/msg"
-            android:layout_width="match_parent"
+            android:id="@+id/suggestion_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/msg_no_internet"
-            android:textColor="@color/text_color_white"/>
+            android:focusable="false"
+            android:textColor="#727272"
+            android:textSize="16sp"/>
 
         <ImageView
-            android:id="@+id/iv_close_msg"
-            android:layout_width="@dimen/image_small_size"
-            android:layout_height="@dimen/image_small_size"
+            android:id="@+id/suggestion_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/clear_white"/>
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_clear"/>
     </RelativeLayout>
 
-</android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_clear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_navigation_close"/>
+
+        <TextView
+            android:id="@+id/tv_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/text_clear"
+            android:textColor="?android:attr/textColor"/>
+    </LinearLayout>
+</FrameLayout>

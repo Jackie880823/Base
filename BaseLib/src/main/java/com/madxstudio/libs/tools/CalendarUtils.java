@@ -31,6 +31,16 @@
 
 package com.madxstudio.libs.tools;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.IntDef;
+import android.text.format.DateUtils;
+
+import com.madxstudio.libs.R;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -47,6 +57,33 @@ import java.util.TimeZone;
  */
 
 public class CalendarUtils {
+
+
+    /**
+     * 秒与毫秒的倍数
+     */
+    public static final int MSEC = 1;
+    /**
+     * 秒与毫秒的倍数
+     */
+    public static final int SEC  = 1000;
+    /**
+     * 分与毫秒的倍数
+     */
+    public static final int MIN  = 60000;
+    /**
+     * 时与毫秒的倍数
+     */
+    public static final int HOUR = 3600000;
+    /**
+     * 天与毫秒的倍数
+     */
+    public static final int DAY  = 86400000;
+
+    @IntDef({MSEC, SEC, MIN, HOUR, DAY})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface Unit {
+    }
 
     /**
      * <p>在工具类中经常使用到工具类的格式化描述，这个主要是一个日期的操作类，所以日志格式主要使用 SimpleDateFormat的定义格式.</p>
@@ -243,6 +280,18 @@ public class CalendarUtils {
     }
 
     /**
+     * 年、月、日、时间；
+     *
+     * @param context
+     * @param millis
+     * @return
+     */
+    public static String formatDate(Context context, long millis) {
+        int flag = DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_TIME;
+        return DateUtils.formatDateTime(context, millis, flag);
+    }
+
+    /**
      * @see #getFormattedYearMothDay(long)
      * @return 获取当前时间的格式 "Year/Month/day", e.g "2017/1/1"
      */
@@ -272,7 +321,8 @@ public class CalendarUtils {
             Date date = new SimpleDateFormat(SERVICE_DATE_PATTERN, Locale.ENGLISH).parse(source);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
-            return calendar.getTimeInMillis() < System.currentTimeMillis();
+            return calendar.getTimeInMillis() + 24 * 60 * 60 * 1000L - 1 < System
+                    .currentTimeMillis();
         } catch (ParseException e) {
             e.printStackTrace();
             return false;
@@ -291,6 +341,30 @@ public class CalendarUtils {
             return mills2FullString(parse.getTime());
         } catch (ParseException e) {
             e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 添加了sec ago、min ago、 hour ago;
+     * @param context
+     * @param timestamp 秒；
+     * @return
+     */
+    @SuppressLint("DefaultLocale")
+    public static String friendlyTimeDate(Context context, long timestamp){
+        long currentTimeSec = System.currentTimeMillis()/1000;
+        long timeDiff = currentTimeSec - timestamp;
+        Resources res = context.getResources();
+        if (timeDiff > 0 && timeDiff <= 60){
+            return String.valueOf(timeDiff) + res.getString(R.string.sec_ago);
+        }else if(timeDiff > 60 && timeDiff <= 3600){
+            return String.valueOf(timeDiff/60) + res.getString(R.string.min_ago);
+        }else if (timeDiff > 3600 && timeDiff <= 3600 * 24){
+            return String.valueOf(timeDiff/3600) + res.getString(R.string.hour_ago);
+        }else if (timeDiff > 3600 * 24){
+            return formatDate(context, timestamp * 1000L);
+        } else {
             return null;
         }
     }

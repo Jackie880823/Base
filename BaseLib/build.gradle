@@ -61,32 +61,38 @@ android {
     buildTypes {
 
         debug {
-            useProguard false
-            minifyEnabled true
             buildConfigField "int", "DEBUG_LEVEL", String.valueOf(3)
+            useProguard     false
+            minifyEnabled   false
+            shrinkResources false
+            signingConfig   signingConfigs.debug
+            // proguardFiles   getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
         release {
             buildConfigField "int", "DEBUG_LEVEL", String.valueOf(6)
 
-            shrinkResources true
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            useProguard     true
+            minifyEnabled   false
+            shrinkResources false
+            signingConfig   signingConfigs.release
+            proguardFiles   getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
     compile dep.supportAnnotation
+    compile dep.recyclerview
     compile dep.appcompatV7
     compile dep.supportV4
     compile dep.design
-    compile dep.recyclerview
-    compile dep.gson
     compile dep.glide
+    compile dep.gson
     compile dep.okgo
     compile dep.okServer
     compile dep.multidex
+    compile dep.countryPicker
     androidTestCompile(dep.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

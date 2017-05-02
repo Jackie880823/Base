@@ -31,6 +31,7 @@
 
 package com.madxstudio.libs.base;
 
+import android.content.Context;
 import android.support.annotation.CallSuper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -51,10 +52,12 @@ public abstract class ViewHolder<V> extends RecyclerView.ViewHolder implements V
     private OnViewHolderClickListener clickListener;
     private OnViewHolderLongClickListener longClickListener;
 
+    protected Context context;
     protected V entity;
 
     public ViewHolder(View itemView) {
         super(itemView);
+        context = itemView.getContext();
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
     }

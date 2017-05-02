@@ -18,6 +18,8 @@
 
 -keepattributes Signature
 
+-injars libs
+
 ##------------- Android官方相关 --------------
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
@@ -69,6 +71,9 @@
 # Gson uses generic type information stored in a class file when working with fields. Proguard
 # removes such information by default, so configure it to keep all of it.
 
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
 # Gson specific classes
 -keep class sun.misc.Unsafe { *; }
 #-keep class com.google.gson.stream.** { *; }
@@ -87,12 +92,32 @@
 #保护反射的正常调用
 -keepattributes EnclosingMethod
 
-
 #okhttp
 -dontwarn okhttp3.**
 -keep class okhttp3.**{*;}
 
-
 #okio
 -dontwarn okio.**
 -keep class okio.**{*;}
+
+#SupeRecyclerView
+-dontwarn com.malinskiy.superrecyclerview.SwipeDismissRecyclerViewTouchListener*
+
+#uCrop
+-dontwarn com.yalantis.ucrop**
+-keep class com.yalantis.ucrop** { *; }
+-keep interface com.yalantis.ucrop** { *; }
+
+##---------------------Start: proguard configuration for Glide --------------------------------
+
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+
+# for DexGuard only
+# -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+##----------------------End: proguard configuration for Glide ---------------------------------
+
+-keep com.madxstudio.libs.tools** {*;}

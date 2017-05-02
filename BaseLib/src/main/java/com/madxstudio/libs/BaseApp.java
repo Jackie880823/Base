@@ -37,7 +37,6 @@ import com.madxstudio.libs.base.BaseActivity;
 import com.madxstudio.libs.tools.http.HttpUtil;
 
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -62,7 +61,7 @@ public class BaseApp extends MultiDexApplication {
         instance = this;
 
         // 初始化网络框架
-        HttpUtil.init(new HashMap<String, String>());
+        HttpUtil.init();
     }
 
     public static void addActivity(BaseActivity activity) {

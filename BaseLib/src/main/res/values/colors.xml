@@ -31,23 +31,39 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!-- 标题栏的背景颜色 -->
+    <color name="colorPrimary">#0270C5</color>
+    <!-- 状态栏的背景颜色 -->
+    <color name="colorPrimaryDark">#005FA9</color>
+    <color name="colorAccent">#FFFF677A</color>
 
-    <!-- 暗色色值，非明确需求所有暗色都使用这个色值 -->
-    <color name="dark">#FF4A4A4A</color>
-    <!-- 灰色色值，非明确需求所有灰色都使用这个色值 -->
-    <color name="grey">#9B9B9B</color>
+    <color name="switch_on_track_color">#800270c5</color>
+    <color name="switch_off_track_color">#42221F1F</color>
 
     <!-- 白色文字的色值 -->
-    <color name="text_color_white">@android:color/white</color>
+    <color name="text_color_white">@color/white</color>
     <!-- 黑色文字的色值 -->
     <color name="text_color_dark">@color/dark</color>
     <!-- hint 文字的色值 -->
     <color name="text_color_hint">@color/grey</color>
-    <!-- 标题栏下的信息提醒背影色 -->
 
+    <!-- 蓝色色值，除colorPrimary以后的偏蓝颜色都得使用这个 浅蓝-->
+    <color name="blue">#E6F4FF</color>
+    <!-- 暗色色值，非明确需求所有暗色都使用这个色值 -->
+    <color name="dark">#FF4A4A4A</color>
+    <!-- 灰色色值，非明确需求所有灰色都使用这个色值 -->
+    <color name="grey">#9B9B9B</color>
+    <!-- 分割线的色值，仅限用于画线条的填充色值 -->
+    <color name="stroke_color">#88979797</color>
+
+    <!-- 半透明色 -->
+    <color name="translucence">#10000000</color>
+    <!-- 纯白色 -->
+    <color name="white">@android:color/white</color>
+
+    <!-- 标题栏下的信息提醒背影色 -->
     <color name="msg_bar_background">@color/dark</color>
     <color name="msg_bar_alert_background">@color/colorAccent</color>
+
+    <color name="shadow">#80000000</color>
 </resources>

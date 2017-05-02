@@ -1,4 +1,5 @@
 /*
+ *
  *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  *             $                                                   $
  *             $                       _oo0oo_                     $
@@ -25,22 +26,15 @@
  *             $                                                   $
  *             $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
  *
- *  Copyright (C) 2017 The Jackie's Android Open Source Project
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *  Copyright (C) 2017 The Mad x Studio's Android Project by Jackie
  */
 
 package com.madxstudio.libs.tools.http;
+
+import android.text.TextUtils;
+
+import com.madxstudio.libs.SDCardException;
+import com.madxstudio.libs.tools.DeviceUtils;
 
 import java.io.File;
 
@@ -62,17 +56,26 @@ public abstract class DownloadCallback extends Callback<File> {
      */
     private String destFileName;
 
-    public DownloadCallback() {
+    public DownloadCallback() throws SDCardException {
         this(null);
     }
 
-    public DownloadCallback(String destFileName) {
-        this(null, destFileName);
+    public DownloadCallback(String destFileName) throws SDCardException {
+        this(DeviceUtils.getSavePath(), destFileName);
     }
 
-    public DownloadCallback(String destFileDir, String destFileName) {
+    public DownloadCallback(String destFileDir, String destFileName) throws SDCardException {
         this.destFileDir = destFileDir;
         this.destFileName = destFileName;
+
+        if (TextUtils.isEmpty(destFileDir)) {
+            throw new SDCardException("save path is null");
+        }
+
+        File file = new File(destFileDir);
+        if (!file.exists()) {
+            file.mkdir();
+        }
     }
 
     public String getDestFileDir() {

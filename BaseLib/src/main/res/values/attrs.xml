@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MaterialSearchView">
+        <attr name="searchSuggestionBackground" format="integer"/>
+        <attr name="searchSuggestionIcon" format="integer"/>
+        <attr name="searchBackground" format="integer"/>
+        <attr name="searchVoiceIcon" format="integer"/>
+        <attr name="searchCloseIcon" format="integer"/>
+        <attr name="searchBackIcon" format="integer"/>
+        <attr name="searchMsgIcon" format="integer"/>
+        <attr name="android:hint" />
+        <attr name="android:inputType"/>
+    </declare-styleable>
+</resources>
